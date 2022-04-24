@@ -57,4 +57,40 @@ grid.draw(mylegend)
 ```
 
 
+```
+# completely placeGrob
+mylegend<-frameGrob(layout=grid.layout(
+  5,3,
+  widths=unit(c(5,2,3),c("lines","char","lines")),
+  heights=unit(rep(1.25,5),"lines")))
+mylegend<-placeGrob(mylegend,textGrob("Legend 1"),row=1,col=1)
+mylegend<-placeGrob(mylegend,textGrob("Legend 2"),row=2,col=1)
+mylegend<-placeGrob(mylegend,textGrob("Legend 3"),row=3,col=1)
+mylegend<-placeGrob(mylegend,textGrob("Legend 4"),row=4,col=1)
+mylegend<-placeGrob(mylegend,textGrob("Legend 5"),row=5,col=1)
+
+mylegend<-placeGrob(mylegend,pointsGrob(x=0.5,y=0.5,size=unit(5,"points")),row=1,col=3)
+mylegend<-placeGrob(mylegend,linesGrob(x=c(0,1),y=c(0.5,0.5)),row=1,col=3)
+mylegend<-placeGrob(mylegend,pointsGrob(x=0.5,y=0.5,size=unit(5,"points")),row=2,col=3)
+mylegend<-placeGrob(mylegend,linesGrob(x=c(0,1),y=c(0.5,0.5)),row=2,col=3)
+mylegend<-placeGrob(mylegend,pointsGrob(x=0.5,y=0.5,size=unit(5,"points")),row=3,col=3)
+mylegend<-placeGrob(mylegend,pointsGrob(x=0.5,y=0.5,size=unit(5,"points")),row=4,col=3)
+mylegend<-placeGrob(mylegend,pointsGrob(x=0.5,y=0.5,size=unit(5,"points")),row=5,col=3)
+
+
+# test
+
+grid.newpage()
+pushViewport(viewport(width=0.9,height=0.9,gp=gpar(fontsize=5)))
+grid.rect()
+
+pushViewport(viewport(
+  x=0,y=0,
+  width=unit(1,"grobwidth",mylegend)+unit(2,"lines"),
+  height=unit(1,"grobheight",mylegend)+unit(1,"lines"),
+  just=c(0,0)))
+grid.rect()
+grid.draw(mylegend)
+```
+
 
